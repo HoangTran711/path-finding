@@ -1,6 +1,9 @@
 $midnight: #2c3e50;
 $clouds: #ecf0f1;
 
+.path-visualize-container {
+  padding-top:70px;
+}
 .grid {
   
     height: calc(100vh-60px);
@@ -10,9 +13,9 @@ $clouds: #ecf0f1;
   }
 
   nav{
-    height: 6rem;
+    height: 3rem;
     width: 100vw;
-    background-color: rgb(12, 53, 71);
+    background-color: black;
     box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
     display: flex;
     z-index: 10;

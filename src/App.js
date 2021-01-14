@@ -7,6 +7,8 @@ import {
 import PathfinderVisualizer from './PathfinderVisualizer/PathfinderVisualizer'
 import { HomePage } from './home-page/home-page'
 import { Navbar } from './components/navbar'
+import { ErrorPage } from './components/404/404'
+import { AboutUs } from './about-us/AboutUs'
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
     <Navbar/>
       <Switch>
         <Route path="/algorithm-visualize" exact component={PathfinderVisualizer} />
-        <Route path="/" component={HomePage} />
+        <Route path="/" exact component={HomePage} />
+        <Route path="/about-us" exact component={AboutUs} />
+        <Route component={ErrorPage} />
       </Switch>
     </div>
   );
