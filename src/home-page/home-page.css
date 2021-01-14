@@ -1,0 +1,59 @@
+.home-page {
+	display:flex;
+	flex-direction: row;
+	width:100%;
+	height:100%;
+	font-family: 'Open Sans';
+}
+.home-page .frame-left { 
+	background-color: #bdb2a8;
+
+	width:50%;
+	height:100vh;
+	color:white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.home-page .frame-left h1 {
+	font-size: 50px;
+	letter-spacing: 4px;
+	font-weight: 600;
+}
+.home-page .frame-left .icon-container {
+	display: flex;
+	flex-direction: row;
+}
+.home-page .frame-left .icon-container .icon{
+	font-size:30px;
+	padding:7px 15px;
+	transition: all .3s;
+	margin-right:10px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+.home-page .frame-left .icon-container .icon:hover {
+	background-color: #D8D8D8;
+}
+.home-page .frame-right {
+	position: relative;
+	width:50%;
+	height:100vh;
+	background-image: url('https://images03.nicepage.io/a1389d7bc73adea1e1c1fb7e/17c2036885f15457944b5c10/pexels-jess-bailey-designs-876466.jpg?version=');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.home-page .frame-right .txt-frame {
+	position:absolute;
+	bottom:20px;
+	left:20px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.home-page .frame-right .txt-frame span {
+	font-weight: 600;
+	font-size: 18px;
+}
