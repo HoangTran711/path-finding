@@ -379,9 +379,6 @@ export default class PathfinderVisualizer extends Component {
             </div>
         </div>
         <nav>
-        <div className="logo" onClick={() => this.resetGrid()}>
-        PATH  <br/> FINDER 
-        </div>
         <ul className="nav-links">{isVisualizing 
         ? <div>
           <div className="spinner"> 
@@ -398,7 +395,7 @@ export default class PathfinderVisualizer extends Component {
               <input type="checkbox" className="dd-input" id="test"></input>
               <ul className="dd-menu">
                 <li onClick={() => this.visualizeDijkstra()}>Dijkstra's Algorithm</li>
-                <li onClick={() => this.visualizeAStar()}>A* Algorithm</li>
+
               </ul>
             </label>
             <li onClick={() => this.resetGrid()}>Reset Grid</li>
@@ -415,9 +412,6 @@ export default class PathfinderVisualizer extends Component {
                 <li onClick={() => this.changeDensity(0.25)}>High Density Obstacles</li>
               </ul>
             </label>
-
-            <li> <a href="#openModal-about">App Info</a> </li>  
-
           </ul>
       }</ul> <br/> 
 

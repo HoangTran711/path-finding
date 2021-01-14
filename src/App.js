@@ -1,11 +1,17 @@
 import React from 'react';
 import './App.css';
-import PathfinderVisualizer from './PathfinderVisualizer/PathfinderVisualizer';
+import {
+  Switch,
+  Route,
+} from "react-router-dom";
+import PathfinderVisualizer from './PathfinderVisualizer/PathfinderVisualizer'
 
 function App() {
   return (
     <div className="App">
-      <PathfinderVisualizer></PathfinderVisualizer>
+      <Switch>
+        <Route path="/algorithm-visualize" component={PathfinderVisualizer} />
+      </Switch>
     </div>
   );
 }
