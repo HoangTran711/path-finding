@@ -1,9 +1,9 @@
 
 import React, {Component} from 'react';
 import Node from './Node/Node';
+import { MyContext } from '../Context/Context'
 import './PathfinderVisualizer.scss';
 import {dijkstra, orderedShortestPath} from '../Algorithms/Dijkstras';
-import { aStar, orderedAStarPath } from '../Algorithms/A_star';
 
 const START_NODE_ROW = 11;
 const START_NODE_COL = 10;
@@ -169,11 +169,11 @@ export default class PathfinderVisualizer extends Component {
   /**
    * Function to enable visualization of Dijkstra's Algorithm in play
    */
-  animateDijkstra (visitedNodesInOrder, nodesInShortestPathOrder){
+  animateDijkstra (visitedNodesInOrder, nodesInShortestPathOrder, context){
     for (let i = 0; i <= visitedNodesInOrder.length-1; i++) {
       if (i === visitedNodesInOrder.length-1) {
         setTimeout(() => {
-          this.animateShortestPath(nodesInShortestPathOrder);
+          this.animateShortestPath(nodesInShortestPathOrder, context);
         }, 3 * i);
         return;
       }    
@@ -182,15 +182,16 @@ export default class PathfinderVisualizer extends Component {
         if (!node.isStart) document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited';
       }, 2 * i);
     }    
+    console.log(1)
+    context.setSuccessMessage('Find path successfully')
   }
 
   /**
    * Function to enable visualization of result ie shortest path found
    */
-  animateShortestPath(nodesInShortestPathOrder) {
+  animateShortestPath(nodesInShortestPathOrder, context) {
     if(nodesInShortestPathOrder[0] !== this.getStartNode()){
-      console.log('No path available');
-      alert('No path available');
+      context.setErrorMessage('No path available!')
       this.setState({isVisualizing: false});
       this.setState({visualizersBeenReset: false});
       return;
@@ -202,6 +203,7 @@ export default class PathfinderVisualizer extends Component {
       }, 50 * i);
     }
     this.setState({isVisualizing: false});
+    context.setSuccessMessage('Find path successfully! ')
     this.setState({visualizationBeenReset: true});
   }
 
@@ -210,14 +212,14 @@ export default class PathfinderVisualizer extends Component {
   /**
    * Function to initiate visualization of Dijkstra's Algorithm
    */
-  visualizeDijkstra() {
+  visualizeDijkstra(context) {
     const {grid} = this.state;
     const startNode = this.getStartNode();
     const finishNode = this.getFinishNode();
     this.minorResetGrid(grid);
     const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
     const nodesInShortestPathOrder = orderedShortestPath(finishNode);
-    this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+    this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder,context);
     this.setState({isVisualizing: true});
     this.setState({visualizationBeenReset: false});
   }
@@ -225,31 +227,6 @@ export default class PathfinderVisualizer extends Component {
     /**
    * Function to initiate visualization of Dijkstra's Algorithm
    */
-  visualizeAStar() {
-    const {grid} = this.state;
-    const startNode = this.getStartNode();
-    const finishNode = this.getFinishNode();
-    this.minorResetGrid(grid);
-    const visitedNodesInOrder = aStar(grid, startNode, finishNode);
-    const nodesInShortestPathOrder = orderedAStarPath(finishNode);
-    this.animateAStar(visitedNodesInOrder, nodesInShortestPathOrder);
-    this.setState({isVisualizing: true});
-    this.setState({visualizationBeenReset: false});
-  }
-  animateAStar (visitedNodesInOrder, nodesInShortestPathOrder){
-    for (let i = 0; i <= visitedNodesInOrder.length-1; i++) { 
-      if (i === visitedNodesInOrder.length-1) {
-        setTimeout(() => {
-          this.animateShortestPath(nodesInShortestPathOrder);
-        }, 3 * i);
-        return;
-      }  
-      setTimeout(()=>{
-        const node = visitedNodesInOrder[i];
-        if (!node.isStart) document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited';
-      }, 3 * i);
-    }    
-  }
 
   /**
    * Function that changes the obstacke setup
@@ -325,67 +302,75 @@ export default class PathfinderVisualizer extends Component {
     const isVisualizing = this.state.isVisualizing;
 
     return (
-      <div className="path-visualize-container">
-        <nav>
-          <ul className="nav-links">{isVisualizing 
-          ? <div>
-            <div className="spinner"> 
-            <span></span><span></span><span></span>
-            </div>
-            <div className="label">Visualizing</div>
-        </div>
-        
-          : <ul className="nav-links">
-              <li onClick={() => this.visualizeDijkstra()}>Dijkstra's Algorithm</li>
-              <li onClick={() => this.resetGrid()}>Reset Grid</li>
-              <li onClick={() => this.toggleObstacles()}>Toggle Obstacles</li>  
-              <label className="dropdown">
-                <div className="dd-button">
-                  Obstacle Options
-                </div>
-                <input type="checkbox" className="dd-input" id="test"></input>
-                <ul className="dd-menu">
-                  <li onClick={() => this.changeObstacles()}>Change Obstacles</li>
-                  <li onClick={() => this.changeDensity(0.095)}>Low Density Obstacles</li>
-                  <li onClick={() => this.changeDensity(0.13)}>Medium Density Obstacles</li>
-                  <li onClick={() => this.changeDensity(0.25)}>High Density Obstacles</li>
-                </ul>
-              </label>
-            </ul>
-        }</ul> <br/> 
-
-        </nav>     
-
-        {/* Render the 2D grid layout */}
-        <div className="grid align-middle">
-          {grid.map((row, rowIdx) => {
+      <MyContext.Consumer>
+        {
+          props => {
             return (
-              <div key={rowIdx}>
-                {row.map((node, nodeIdx) => {
-                  const {row, col, isFinish, isStart, isWall} = node;
-                  return (
-                    <Node
-                      key={nodeIdx}
-                      col={col}
-                      isFinish={isFinish}
-                      isStart={isStart}
-                      isWall={isWall}
-                      mouseIsPressed={mouseIsPressed}
-                      startNodeIsPressed={startNodeIsPressed}
-                      finishNodeIsPressed={finishNodeIsPressed}
-                      whileMousePressed={(row, col) => this.handleMousePress(row, col)}
-                      onMouseEnter={(row, col) => this.handleMouseEnter(row, col)}   
-                      onMouseLeave={(row, col) => this.handleMouseLeave(row, col)}   
-                      onMouseUp={()=> this.handleStop(row, col)}                
-                      row={row}>
-                    </Node>
-                  );
-                })}
+              <div className="path-visualize-container">
+                <nav>
+                  <ul className="nav-links">{isVisualizing 
+                  ? <div>
+                    <div className="spinner"> 
+                    <span></span><span></span><span></span>
+                    </div>
+                    <div className="label">Visualizing</div>
+                </div>
+                
+                  : <ul className="nav-links">
+                      <li onClick={() => this.visualizeDijkstra(props)}>Dijkstra's Algorithm</li>
+                      <li onClick={() => this.resetGrid()}>Reset Grid</li>
+                      <li onClick={() => this.toggleObstacles()}>Toggle Obstacles</li>  
+                      <label className="dropdown">
+                        <div className="dd-button">
+                          Obstacle Options
+                        </div>
+                        <input type="checkbox" className="dd-input" id="test"></input>
+                        <ul className="dd-menu">
+                          <li onClick={() => this.changeObstacles()}>Change Obstacles</li>
+                          <li onClick={() => this.changeDensity(0.095)}>Low Density Obstacles</li>
+                          <li onClick={() => this.changeDensity(0.13)}>Medium Density Obstacles</li>
+                          <li onClick={() => this.changeDensity(0.25)}>High Density Obstacles</li>
+                        </ul>
+                      </label>
+                    </ul>
+                }</ul> <br/> 
+
+                </nav>     
+
+                {/* Render the 2D grid layout */}
+                <div className="grid align-middle">
+                  {grid.map((row, rowIdx) => {
+                    return (
+                      <div key={rowIdx}>
+                        {row.map((node, nodeIdx) => {
+                          const {row, col, isFinish, isStart, isWall} = node;
+                          return (
+                            <Node
+                              key={nodeIdx}
+                              col={col}
+                              isFinish={isFinish}
+                              isStart={isStart}
+                              isWall={isWall}
+                              mouseIsPressed={mouseIsPressed}
+                              startNodeIsPressed={startNodeIsPressed}
+                              finishNodeIsPressed={finishNodeIsPressed}
+                              whileMousePressed={(row, col) => this.handleMousePress(row, col)}
+                              onMouseEnter={(row, col) => this.handleMouseEnter(row, col)}   
+                              onMouseLeave={(row, col) => this.handleMouseLeave(row, col)}   
+                              onMouseUp={()=> this.handleStop(row, col)}                
+                              row={row}>
+                            </Node>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            );
-          })}
-        </div>
-      </div>
+            )
+          }
+        }
+      </MyContext.Consumer>
     );
   }
 }

@@ -1,0 +1,36 @@
+.message {
+	overflow: hidden;
+	padding:10px;
+	position: absolute;
+	top:150px;
+	z-index: 10000;
+	left:50%;
+	color:white;
+	width:300px;
+	height:50px;
+	transform: translate(-50%,-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	animation: moveInTop .3s;
+	animation-fill-mode: forwards;
+}
+.txt-frame p {
+	margin-left:20px;
+}
+.successMessage{
+	background-color: #2EFE2E;
+}
+.errorMessage {
+	background-color: #FE2E2E;
+}
+@keyframes moveInTop {
+	from {
+		opacity: 0;
+		transform: translate(-50%,-200px);
+	}
+	to {
+		opacity: 1;
+		transform: translate(-50%,-50%);
+	}
+}

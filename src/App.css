@@ -16,7 +16,17 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.loading {
+  width:100vw;
+  height:100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading img {
+  width:150px;
+  
+}
 .App-link {
   color: #09d3ac;
 }
