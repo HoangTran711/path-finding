@@ -5,6 +5,8 @@ import Hanh from '../assets/hanh.png'
 import Huy from '../assets/huy.png'
 import Thao from '../assets/thao.png'
 import Tran from '../assets/tran.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookMessenger, faGooglePlus, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import './AboutUs.css'
 
 export const AboutUs = () => {
@@ -46,23 +48,73 @@ export const AboutUs = () => {
 			<div className="slideshow-container">
 				<div className={classnames("mySlides fade")}>
 					<img src={Danh} style={{"width":"100%"}} alt="avt"/>
-					<div className="text">Caption Text</div>
+					<div className="caption">
+						<div className="icon-container">
+							<FontAwesomeIcon icon={faFacebookMessenger} className="icon" />
+							<FontAwesomeIcon icon={faTwitter} className="icon" />
+							<FontAwesomeIcon icon={faGooglePlus} className="icon" />
+							<FontAwesomeIcon icon={faLinkedin} className="icon" />
+						</div>
+						<div className="btn-cation">
+							<a href={() => false} className="">Learn more!</a>
+						</div>
+					</div>
 				</div>
 				<div className={classnames("mySlides fade")}>
 					<img src={Huy} style={{"width":"100%"}} alt="avt"/>
-					<div className="text">Caption Two</div>
+					<div className="caption">
+						<div className="icon-container">
+							<FontAwesomeIcon icon={faFacebookMessenger} className="icon" />
+							<FontAwesomeIcon icon={faTwitter} className="icon" />
+							<FontAwesomeIcon icon={faGooglePlus} className="icon" />
+							<FontAwesomeIcon icon={faLinkedin} className="icon" />
+						</div>
+						<div className="btn-cation">
+							<a href={() => false} className="">Learn more!</a>
+						</div>
+					</div>
 				</div>
 				<div className={classnames("mySlides fade")}>
 					<img src={Hanh} style={{"width":"100%"}} alt="avt"/>
-					<div className="text">Caption Three</div>
+					<div className="caption">
+						<div className="icon-container">
+							<FontAwesomeIcon icon={faFacebookMessenger} className="icon" />
+							<FontAwesomeIcon icon={faTwitter} className="icon" />
+							<FontAwesomeIcon icon={faGooglePlus} className="icon" />
+							<FontAwesomeIcon icon={faLinkedin} className="icon" />
+						</div>
+						<div className="btn-cation">
+							<a href={() => false} className="">Learn more!</a>
+						</div>
+					</div>
 				</div>
 				<div className={classnames("mySlides fade")}>
 					<img src={Thao} style={{"width":"100%"}} alt="avt"/>
-					<div className="text">Caption Three</div>
+					<div className="caption">
+						<div className="icon-container">
+							<FontAwesomeIcon icon={faFacebookMessenger} className="icon" />
+							<FontAwesomeIcon icon={faTwitter} className="icon" />
+							<FontAwesomeIcon icon={faGooglePlus} className="icon" />
+							<FontAwesomeIcon icon={faLinkedin} className="icon" />
+						</div>
+						<div className="btn-cation">
+							<a href={() => false} className="">Learn more!</a>
+						</div>
+					</div>
 				</div>
 				<div className={classnames("mySlides fade")}>
 					<img src={Tran} style={{"width":"100%"}} alt="avt"/>
-					<div className="text">Caption Three</div>
+					<div className="caption">
+						<div className="icon-container">
+							<FontAwesomeIcon icon={faFacebookMessenger} className="icon" />
+							<FontAwesomeIcon icon={faTwitter} className="icon" />
+							<FontAwesomeIcon icon={faGooglePlus} className="icon" />
+							<FontAwesomeIcon icon={faLinkedin} className="icon" />
+						</div>
+						<div className="btn-cation">
+							<a href={() => false} className="">Learn more!</a>
+						</div>
+					</div>
 				</div>
 
 				<a href={() => false} className="prev" onClick={() => plusSlides(-1)}>&#10094;</a>

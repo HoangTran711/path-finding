@@ -17,7 +17,7 @@ import { Message } from './message/message'
 function App() {
   const [isLoading, setIsLoading] = React.useState(true)
   const [errorMessage, setErrorMessage] = React.useState('')
-  const [successMessage, setSuccessMessage] = React.useState('Find path successfully!')
+  const [successMessage, setSuccessMessage] = React.useState('')
   React.useEffect(() => {
     setTimeout(() => setIsLoading(false), 3000)
   }, [])
