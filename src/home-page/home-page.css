@@ -40,7 +40,7 @@
 	position: relative;
 	width:50%;
 	height:100vh;
-	background-image: url('https://images03.nicepage.io/a1389d7bc73adea1e1c1fb7e/17c2036885f15457944b5c10/pexels-jess-bailey-designs-876466.jpg?version=');
+	background-image: url('../assets/background-home.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 }

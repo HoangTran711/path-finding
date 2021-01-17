@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import {MyContext} from './Context/Context'
-import PathfinderVisualizer from './PathfinderVisualizer/PathfinderVisualizer'
+import PathFinder from './pathfinder/Home/Home'
 import { HomePage } from './home-page/home-page'
 import { Navbar } from './components/navbar'
 import { ErrorPage } from './components/404/404'
@@ -41,12 +41,13 @@ function App() {
       }} >
         <div className="App">
           <Navbar/>
+          
           {(successMessage || errorMessage) ? <Message errorMessage={errorMessage} successMessage={successMessage} /> : null}
             <Switch>
-              <Route path="/algorithm-visualize" exact component={PathfinderVisualizer} />
               <Route path="/" exact component={HomePage} />
               <Route path="/about-us" exact component={AboutUs} />
               <Route path="/theory" exact component={Theory} />
+              <Route path="/algorithm-visualize" exact component={PathFinder}/>
               <Route component={ErrorPage} />
             </Switch>
           </div>

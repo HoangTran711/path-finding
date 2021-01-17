@@ -1,12 +1,13 @@
 import React from 'react'
-import Image from '../assets/2.png'
+import Image from '../assets/regative-gr.png'
+import Image1 from '../assets/background-theory.jpeg'
 import './Theory.css'
 
 export const Theory = () => {
 	return (
 		<div className="theory-container">
 			<div class="intro">
-					<img src="https://images01.nicepage.io/bc/ed/bced7c4e6c4c7e95d0cf8b98057ecf7e.jpeg" alt="background"/>
+					<img src={Image1} alt="background"/>
 					<div class="intro-box">
 							<div class="title">Dijkstra's algorithm</div>
 							<div class="content-intro">Easy finds the shortest path between a given node (which is called the "source node") and all other nodes in a graph.</div>

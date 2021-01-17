@@ -1,0 +1,11 @@
+#board {
+  margin: auto;
+  display: table;
+  border-collapse: collapse;
+  margin-bottom: 4px;
+  touch-action: none;
+}
+
+.board__row {
+  display: table-row;
+}
