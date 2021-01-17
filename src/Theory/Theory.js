@@ -10,10 +10,10 @@ export const Theory = () => {
 					<div class="intro-box">
 							<div class="title">Dijkstra's algorithm</div>
 							<div class="content-intro">Easy finds the shortest path between a given node (which is called the "source node") and all other nodes in a graph.</div>
-							<button class="btn">Learn more</button>
+							 <a href="#main-content"><button class="btn">Learn more</button></a>
 					</div>
 			</div>
-				<div class="list-content">
+				<div class="list-content" id="main-content">
 					<div class="purpose">
 							<div class="title">Purpose and Use Cases</div>
 							<div class="content-purpose">
@@ -41,7 +41,7 @@ export const Theory = () => {
 								</div>
 					</div>
 							<div class="purpose basic">
-									<div class="title" style={{paddingTop: '40px'}}>Basics of Dijkstra's Algorithm </div>
+									<div class="title">Basics of Dijkstra's Algorithm </div>
 									<div>
 											<div class="paragraph"><b>Step 1:</b> Dijkstra's Algorithm basically starts at the node that you choose (the source node) 
 													and it analyzes the graph to find the shortest path between that node and all the other nodes in the graph.
@@ -58,11 +58,11 @@ export const Theory = () => {
 									</div>
 							</div>
 							<div class="history">
-									<div class="title" style={{paddingTop: '40px'}}>Requirements</div>
+									<div class="title">Requirements</div>
 									<div>
 											<div class="content-detail">
 													<div class="history-content">
-															<div class="paragraph">Dijkstra's Algorithm can only work with graphs that have <b>positive weights</b>. 
+															<div class="paragraph"><b>Dijkstra's Algorithm</b> can only work with graphs that have <b>positive weights</b>. 
 																	This is because, during the process, the weights of the edges have to be added to find the shortest path.
 															</div>
 															<div class="paragraph">If there is a <b> negative weight </b> in the graph, then the algorithm <b>will not work properly</b>. Once a node has been marked as "visited",

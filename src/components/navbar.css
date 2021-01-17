@@ -24,7 +24,7 @@ body{
 	display: flex;
 	list-style-type: none;
 }
-.nav-bar .nav-bar-option ul li{
+.nav-bar .nav-bar-option ul a{
 	margin-right: 20px;
 	font-size: 14px;   
 	transition: 0.3s;
@@ -50,9 +50,7 @@ body{
 	color: #555;
 	
 }
-.nav-bar .nav-bar-option ul li:hover{
+.nav-bar .nav-bar-option ul a:hover{
 	background-color: #555;
-}
-.nav-bar .nav-bar-option ul li:hover a{
-	color:  white ;
+	color: white;
 }

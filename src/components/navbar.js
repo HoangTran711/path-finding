@@ -13,11 +13,11 @@ export const Navbar = () => {
         </div>
         <div className="nav-bar-option">
             <ul>
-                <li><Link to="/"> HOME </Link></li>
-                <li><Link to="/theory"> THEORY </Link></li>
-                <li><Link to="/algorithm-visualize"> VISUALIZE </Link></li>
-                <li><a target="_blank"  rel="noopener noreferrer" href="https://github.com/HoangTran711/path-finding?fbclid=IwAR0zCZRe6Y4-yJUG43w976BOm61ccg13rHG9-S9UZhloyNgVhlc_HgN6DUo"><FontAwesomeIcon className="icon-github" icon={faGithub} /></a></li>
-                <li><Link to="/about-us">ABOUT</Link></li>
+                <Link to="/"><li> HOME </li></Link>
+                <Link to="/theory" ><li>THEORY</li> </Link>
+                <Link to="/algorithm-visualize" ><li>VISUALIZE</li> </Link>
+                <a target="_blank"  rel="noopener noreferrer" href="https://github.com/HoangTran711/path-finding?fbclid=IwAR0zCZRe6Y4-yJUG43w976BOm61ccg13rHG9-S9UZhloyNgVhlc_HgN6DUo"><li><FontAwesomeIcon className="icon-github" icon={faGithub} /></li></a>
+                <Link to="/about-us"><li>ABOUT</li></Link>
             </ul>
         </div>   
     </div>
