@@ -32,6 +32,7 @@
 	margin-right:10px;
 	border-radius: 20px;
 	cursor: pointer;
+	color: white ;
 }
 .home-page .frame-left .icon-container .icon:hover {
 	background-color: #D8D8D8;
