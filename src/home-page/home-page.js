@@ -9,15 +9,15 @@ export const HomePage  = () => {
 			<div className="frame-left">
 				<h1 className="heading-primary">Find Shortest Path</h1>
 				<div className="icon-container">
-					<a href="https://www.facebook.com/kudokun0711/" target="_blank" className="icon">
+					<a href="https://www.facebook.com/kudokun0711/" target="_blank" rel="noopener noreferrer" className="icon">
 						<div className="ico">
 						<FontAwesomeIcon icon={faFacebook}/>
 						</div>
 					</a>
-					<a href="https://www.instagram.com/gigoo___/?hl=vi" target="_blank" className="icon">
+					<a href="https://www.instagram.com/gigoo___/?hl=vi" target="_blank" rel="noopener noreferrer" className="icon">
 						<FontAwesomeIcon icon={faInstagram}/>
 					</a>
-					<a href="https://github.com/HoangTran711/path-finding?fbclid=IwAR0zCZRe6Y4-yJUG43w976BOm61ccg13rHG9-S9UZhloyNgVhlc_HgN6DUo" target="_blank" className="icon">
+					<a  href="https://github.com/HoangTran711/path-finding?fbclid=IwAR0zCZRe6Y4-yJUG43w976BOm61ccg13rHG9-S9UZhloyNgVhlc_HgN6DUo" target="_blank" rel="noopener noreferrer" className="icon">
 					<FontAwesomeIcon icon={faGithub}/>
 					</a>						
 				</div>
